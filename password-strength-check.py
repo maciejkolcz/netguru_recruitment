@@ -26,7 +26,7 @@ except NoSuchElementException:
 userFirstName = "21"
 userLastName = "37"
 newUserName = "basehohen2137"
-badPassword = 123
+badPassword = "123456789"
 
 # xpath to wrong password feedback
 wrongPasswordFeedback = ("/html/body/div[1]/div[1]/div[2]/div[1]/div[2]/div" +
