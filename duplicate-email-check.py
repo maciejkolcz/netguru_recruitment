@@ -35,7 +35,7 @@ time.sleep(0.5)
 # click the next button
 nextButton = browser.find_element_by_id('accountDetailsNext')
 nextButton.click()
-time.sleep(5)
+time.sleep(3)
 
 
 # check if validation works and duplicate name is not correct
