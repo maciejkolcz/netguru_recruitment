@@ -5,4 +5,4 @@ import time
 def slow_typing(element: str, text: str):
     for character in text:
         element.send_keys(character)
-        time.sleep(0.1)
+        time.sleep(0.05)

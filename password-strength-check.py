@@ -7,7 +7,7 @@ from utils.utils import slow_typing
 
 
 # This test is supposed to check if password strength check works
-# when all fields are filled correctly and password consist of numbers only
+# when all fields are filled correctly
 
 
 # open chrome
@@ -23,10 +23,14 @@ except NoSuchElementException:
     None
 
 # define user input
-userFirstName = "21"
-userLastName = "37"
-newUserName = "basehohen2137"
+userFirstName = "32"
+userLastName = "48"
+newUserName = "basehohen3248"
 badPassword = "123456789"
+badPasswordDict = {'shortMix': '!a34567', 'numbers': '12345678',
+                   'numbersSymbols': '1234567!', 'symbols': '!@#$%^&*',
+                   'letters': 'alamakota', 'username': 'basehohen3248',
+                   'goodPassword': 'Alamak1!'}
 
 # xpath to wrong password feedback
 wrongPasswordFeedback = ("/html/body/div[1]/div[1]/div[2]/div[1]/div[2]/div" +
@@ -36,41 +40,49 @@ wrongPasswordFeedback = ("/html/body/div[1]/div[1]/div[2]/div[1]/div[2]/div" +
 # put first name
 firstNameField = browser.find_element_by_id("firstName")
 slow_typing(firstNameField, userFirstName)
-time.sleep(1)
+time.sleep(0.5)
 
 # put last name
 lastNameField = browser.find_element_by_id("lastName")
 slow_typing(lastNameField, userLastName)
-time.sleep(1)
+time.sleep(0.5)
 
 # put user name
 userNameField = browser.find_element_by_id("username")
 slow_typing(userNameField, newUserName)
-time.sleep(1)
-
-# put bad password
-passwordField = browser.find_element_by_name("Passwd")
-slow_typing(passwordField, badPassword)
-time.sleep(1)
-
-# confirm bad password
-confirmField = browser.find_element_by_name("ConfirmPasswd")
-slow_typing(confirmField, badPassword)
-time.sleep(1)
-
-# click the next button
-nextButton = browser.find_element_by_id('accountDetailsNext')
-nextButton.click()
-time.sleep(5)
+time.sleep(0.5)
 
 
 # check if validation works, and password is wrong
-def password_validation():
-    try:
-        browser.find_element_by_xpath(wrongPasswordFeedback)
-        print("Password strength check works!")
-    except NoSuchElementException:
-        print("Password strength check failed!")
+def password_validation(badPasswordsDictionary):
+    i = 0
+    j = len(badPasswordsDictionary)
+    for key in badPasswordsDictionary:
+        try:
+            # put bad password
+            passwordField = browser.find_element_by_name("Passwd")
+            slow_typing(passwordField, badPasswordsDictionary[key])
+            # confirm bad password
+            confirmField = browser.find_element_by_name("ConfirmPasswd")
+            slow_typing(confirmField, badPasswordsDictionary[key])
+            # click the next button
+            nextButton = browser.find_element_by_id('accountDetailsNext')
+            nextButton.click()
+            time.sleep(1)
+            # find feedback about wrong password
+            browser.find_element_by_xpath(wrongPasswordFeedback)
+            print(badPasswordsDictionary[key], "is not valid password. P" +
+                                               "assword strength check works!")
+            time.sleep(0.5)
+            i += 1
+            # empty password fields
+            passwordField.clear()
+            confirmField.clear()
+            time.sleep(0.5)
+        except NoSuchElementException:
+            print(badPasswordsDictionary[key], "is valid password. Password " +
+                                               "strength check failed!")
+    return print(i, "out of", j, "proposed passwords are bad.")
 
 
-password_validation()
+password_validation(badPasswordDict)
