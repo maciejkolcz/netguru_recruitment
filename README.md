@@ -9,8 +9,8 @@ prerequisites to run test:
 4. Chromedriver installed - pip install chromedriver-binary-auto
 5. Download scripts onto your computer
 6. Open Powershell 
-7. Go to directory with test scripts (e.g. if you have script in 'C:\Users\kolcz\Selenium\' type: cd 'C:\Users\kolcz\Selenium\')
-8. Run test with command: 'py .\test-file-name.py'. Where test-file-name.py is script name.
+7. Go to directory with test scripts, e.g. if you have script in 'C:\Users\kolcz\Selenium\' type: cd 'C:\Users\kolcz\Selenium\'.
+8. Run test with command: py .\test-file-name.py. Where test-file-name.py is script name.
 
 
 
