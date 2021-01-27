@@ -1,9 +1,9 @@
-from selenium.webdriver import Chrome, ChromeOptions
-from selenium.common.exceptions import NoSuchElementException
-import sys
-from utils.utils import slow_typing
 import chromedriver_binary
+import sys
 import time
+from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver import Chrome, ChromeOptions
+from utils.utils import slow_typing
 
 
 # This test is supposed to check if user can create new acccount

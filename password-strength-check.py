@@ -1,9 +1,9 @@
-from selenium.webdriver import Chrome, ChromeOptions
-from selenium.common.exceptions import NoSuchElementException
-import sys
-from utils.utils import slow_typing
 import chromedriver_binary
+import sys
 import time
+from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver import Chrome, ChromeOptions
+from utils.utils import slow_typing
 
 
 # This test is supposed to check if password strength check works
@@ -26,7 +26,7 @@ except NoSuchElementException:
 userFirstName = "21"
 userLastName = "37"
 newUserName = "basehohen2137"
-badPassword = "123456789"
+badPassword = 123
 
 # xpath to wrong password feedback
 wrongPasswordFeedback = ("/html/body/div[1]/div[1]/div[2]/div[1]/div[2]/div" +
